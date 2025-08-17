@@ -38,6 +38,8 @@ class LinkedList{
 
         bool push_back(T _value);
         bool push_front(T _value);
+        bool push_array_back(T* _list, int size);
+        bool push_array_front(T* _list, int size);
 
         bool pop_back();
         bool pop_front();

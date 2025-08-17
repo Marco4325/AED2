@@ -73,6 +73,15 @@ bool LinkedList<T>::push_back(T _value){
     return true;
 }
 
+template <typename T>
+bool LinkedList<T>::push_front(T _value){
+    Node<T>* newNode = new Node<T>{_value, this->get_head()};
+    if( this->get_list_size() == 0 ){ this->set_tail(newNode); }
+    this->set_head(newNode);
+    increment_list_size();
+    return true;
+}
+
 // DELETES
 
 template <typename T>
@@ -99,6 +108,15 @@ bool LinkedList<T>::pop_back(){
     }
 
     return false;
+}
+
+template <typename T>
+bool LinkedList<T>::pop_front(){
+    Node<T>* temp = this->get_head();
+    this->set_head(temp->get_next_node());
+    temp->set_next_node(nullptr);
+    decrement_list_size();
+    return true;
 }
 
 // INFORMATION

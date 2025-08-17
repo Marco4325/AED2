@@ -37,8 +37,10 @@ class LinkedList{
         int get_list_size();
 
         bool push_back(T _value);
-        
+        bool push_front(T _value);
+
         bool pop_back();
+        bool pop_front();
 
         void print_list();
 };

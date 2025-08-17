@@ -35,14 +35,16 @@ class LinkedList{
         LinkedList();
         
         int get_list_size();
+        bool set_list_size(int _size);
 
         bool push_back(T _value);
         bool push_front(T _value);
-        bool push_array_back(T* _list, int size);
-        bool push_array_front(T* _list, int size);
+        bool push_array_back(T* _list, int _size);
+        bool push_array_front(T* _list, int _size);
 
         bool pop_back();
         bool pop_front();
+        bool clear_list();
 
         void print_list();
 };

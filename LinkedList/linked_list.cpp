@@ -49,6 +49,9 @@ template <typename T>
 void LinkedList<T>::increment_list_size(){ this->size++; }
 
 template <typename T>
+bool LinkedList<T>::set_list_size(int _size){ this->size = _size; return true; }
+
+template <typename T>
 int LinkedList<T>::get_list_size(){ return this->size; }
 
 template <typename T>
@@ -83,9 +86,9 @@ bool LinkedList<T>::push_front(T _value){
 }
 
 template <typename T>
-bool LinkedList<T>::push_array_back(T* _array, int size){
+bool LinkedList<T>::push_array_back(T* _array, int _size){
     Node<T>* previousNode = nullptr;
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < _size; i++){
         Node<T>* newNode = new Node<T>{_array[i], nullptr};
         if( i ) previousNode->set_next_node(newNode);
         this->get_tail()->set_next_node(newNode);
@@ -97,9 +100,9 @@ bool LinkedList<T>::push_array_back(T* _array, int size){
 }
 
 template <typename T>
-bool LinkedList<T>::push_array_front(T* _array, int size){
+bool LinkedList<T>::push_array_front(T* _array, int _size){
     Node<T>* nextNode = this->get_head();
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < _size; i++){
         Node<T>* newNode = new Node<T>{_array[i], nextNode};
         this->set_head(newNode);
         if( !this->get_list_size() ) this->set_tail(newNode);
@@ -115,6 +118,11 @@ template <typename T>
 bool LinkedList<T>::pop_back(){
     Node<T>* aux = get_head();
     
+    if( !this->get_list_size() ){
+        std::cout << "ERROR: Can't pop from empty list\n";
+        return false;
+    }
+
     if(get_list_size() == 1){
         set_head(nullptr);
         set_tail(nullptr);
@@ -139,10 +147,24 @@ bool LinkedList<T>::pop_back(){
 
 template <typename T>
 bool LinkedList<T>::pop_front(){
+    
+    if( !this->get_list_size() ){
+        std::cout << "ERROR: Can't pop from empty list\n";
+        return false;
+    }
+    
     Node<T>* temp = this->get_head();
     this->set_head(temp->get_next_node());
     temp->set_next_node(nullptr);
     decrement_list_size();
+    return true;
+}
+
+template <typename T>
+bool LinkedList<T>::clear_list(){
+    this->set_head(nullptr);
+    this->set_tail(nullptr);
+    this->set_list_size(0);
     return true;
 }
 

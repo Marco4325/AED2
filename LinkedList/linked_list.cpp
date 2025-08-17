@@ -82,6 +82,33 @@ bool LinkedList<T>::push_front(T _value){
     return true;
 }
 
+template <typename T>
+bool LinkedList<T>::push_array_back(T* _array, int size){
+    Node<T>* previousNode = nullptr;
+    for(int i = 0; i < size; i++){
+        Node<T>* newNode = new Node<T>{_array[i], nullptr};
+        if( i ) previousNode->set_next_node(newNode);
+        this->get_tail()->set_next_node(newNode);
+        previousNode = newNode;
+        this->set_tail(previousNode);
+        increment_list_size();
+    }
+    return true;
+}
+
+template <typename T>
+bool LinkedList<T>::push_array_front(T* _array, int size){
+    Node<T>* nextNode = this->get_head();
+    for(int i = 0; i < size; i++){
+        Node<T>* newNode = new Node<T>{_array[i], nextNode};
+        this->set_head(newNode);
+        if( !this->get_list_size() ) this->set_tail(newNode);
+        nextNode = newNode;
+        increment_list_size();
+    }
+    return true;
+}
+
 // DELETES
 
 template <typename T>

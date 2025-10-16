@@ -1,22 +1,10 @@
-#include "SelectionSort\SelectionSort.hpp"
-#include "BubbleSort\BubbleSort.hpp"
-#include <iostream>
+#include "BubbleSort.hpp"
+#include "SelectionSort.hpp"
 
 int main(){
 
-    int vector_size = 10, vector_selection[vector_size] = {3, 0, 2, 6, 5, -2, 8, -5, 9, 7};
-    SelectionSort::sort(vector_selection, vector_size);
-    for( int i = 0; i < vector_size; i++){
-        std::cout << vector_selection[i] << " ";
-    }
+    int vector[] = {5, 6, 4, 3, 2, 1};
 
-    std::cout << "\n\n\n";
-
-    int vector_bubble[vector_size] = {3, 0, 2, 6, 5, -2, 8, -5, 9, 7};
-    BubbleSort::sort(vector_bubble, vector_size);
-    for( int i = 0; i < vector_size; i++){
-        std::cout << vector_bubble[i] << " ";
-    }
-
+    SelectionSort::sort(vector, 6, 0);
 
 return 0;}

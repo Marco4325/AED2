@@ -1,4 +1,5 @@
 #include "SelectionSort.hpp"
+#include "..\swap.hpp"
 #include <climits>
 
 int SelectionSort::max(int* _vector, int _start, int _end){
@@ -13,12 +14,6 @@ int SelectionSort::max(int* _vector, int _start, int _end){
     }
     return max_pos;
 };
-
-void SelectionSort::swap(int* _vector, int _start, int _end){
-    int _temp = _vector[_start];
-    _vector[_start] = _vector[_end];
-    _vector[_end] = _temp;
-}
 
 void SelectionSort::sort(int* _vector, int vector_size){
     for(int i = (vector_size - 1); i > 0; i--){
